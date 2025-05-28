@@ -22,9 +22,8 @@ class Field {
 
   print() {
     // Print the field to the console
-    // Join each row's characters with a space and print it
     this.field.forEach((row) => {
-      console.log(row.join(" "));
+      console.log(row.join(" ")); // Join each row's characters with a space and print it
     });
   }
 
@@ -33,39 +32,23 @@ class Field {
     const oldY = this.playerY;
     const oldX = this.playerX;
 
-    let directionLabel;
-
     switch (direction) {
-      case "u":
-        this.playerY--; // Move up
-        directionLabel = "up";
+      case "u": this.playerY--; // Move up
         break;
-      case "d":
-        this.playerY++; // Move down
-        directionLabel = "down";
+      case "d":this.playerY++; // Move down
         break;
-      case "l":
-        this.playerX--; // Move left
-        directionLabel = "left";
+      case "l":this.playerX--; // Move left
         break;
-      case "r":
-        this.playerX++; // Move right
-        directionLabel = "right";
+      case "r": this.playerX++; // Move right
         break;
       default:
         console.log("\nInvalid direction -> please use 'u', 'd', 'l', or 'r'.");
     }
-    console.log("\n" + `moving ${directionLabel}...` + "\n");
-    console.log(
-      `Your position is now: (${this.playerY}, ${this.playerX})` + "\n"
-    );
-
+    console.log(`Your position is now: (${this.playerY}, ${this.playerX})` + "\n");
     console.log(`${oldY}, ${oldX} -> ${this.playerY}, ${this.playerX}` + "\n");
   }
 
   gameOver() {
-    // Check if the player has fallen into a hole or found the hat or moved outside the field
-
     // Check if the player is outside the field first
     if (
       this.playerX < 0 ||
@@ -107,10 +90,10 @@ class Field {
       this.field.push(row);
     }
 
-    // Step 2: Place player start at top-left
+    // Place player start at top-left
     this.field[0][0] = pathCharacter;
 
-    // Step 3: Place the hat at a random position
+    // Place the hat at a random position
     let hatPlaced = false;
 
     while (!hatPlaced) {
@@ -144,14 +127,10 @@ class Field {
     let playing = true;
 
     while (playing) {
-      //clear the console for a fresh view
-      console.clear();
+      console.clear(); //clear the console for a fresh view
       this.print(); //show the current field
-      // Prompt the user for a direction to move
 
-      const direction = prompt(
-        "Which direction would you like to move? (u/d/l/r) "
-      );
+      const direction = prompt("Which direction would you like to move? (u/d/l/r) "); // Ask the user for a direction
       // Store old position before move
       const oldY = this.playerY;
       const oldX = this.playerX;
@@ -168,31 +147,25 @@ class Field {
     }
   }
 }
-
-// ---------------------------------------------------------------------
-
+// -------------------------------------------------------------------------
 // Initialize the game
 const field1 = new Field(Field.generateField()); // Create a new field with random size and holes
-
 // Output welcome message and instructions
 console.log("Welcome to 'Find Your Hat'!");
 console.log("You are represented by '*', the hat is '^', and holes are 'O'.");
 console.log(
-  "Navigate through the field using 'u', 'l', 'd', 'r' to move up, left, down, and right respectively."
-);
-console.log("");
-console.log(
-  `Your starting position is: (${field1.playerY}, ${field1.playerX})`
-);
+"Navigate through the field using 'u', 'l', 'd', 'r' to move up, left, down, and right respectively.\n");
+console.log(`Your starting position is: (${field1.playerY}, ${field1.playerX})`);
 
 const checkReady = prompt(
   "Press Enter to start the game or type 'exit' to quit: "
 );
+
 if (checkReady.toLowerCase() === "exit") {
   console.log("Thanks for playing! Goodbye!");
   process.exit(); // Exit the game if the user types 'exit'
   //process.exit(); is a Node.js command that immediately stops the program.
 }
-
+// -------------------------------------------------------------------------
 // Start the game
 field1.runGame();

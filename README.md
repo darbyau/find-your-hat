@@ -17,10 +17,12 @@
   - `l` = left
   - `r` = right
 - The goal is to reach the hat (`^`) without falling into a hole (`O`) or moving outside the field.
+- **Tip:** Press `Control + C` at any time to exit the program in the terminal.
 
 ## Features
 
-- Randomly generated fields with customizable size and hole percentage.
+- Randomly generated fields with **customizable** size and hole percentage.
+  - You can adjust the field size and hole percentage by modifying the arguments to `Field.generateField()` in `main.js`.
 - Clear terminal display of the field after each move.
 - Game ends when you find the hat, fall into a hole, or move outside the field.
 - Replayable with different field configurations.
@@ -44,3 +46,4 @@
 
    ```bash
    node main.js
+   ```
