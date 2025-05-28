@@ -80,6 +80,9 @@ class Field {
 
     height = height || Math.floor(Math.random() * 8) + 3; // Default height if not provided || at least 3
     width = width || Math.floor(Math.random() * 8) + 3; // Default width if not provided | // at least 3
+    
+    // Validate height and width
+    if (typeof height !== 'number' || typeof width !== 'number') throw new Error('Invalid height and/or width');
 
     // Fill the field with the fieldCharacter
     for (let y = 0; y < height; y++) {
@@ -130,7 +133,7 @@ class Field {
       console.clear(); //clear the console for a fresh view
       this.print(); //show the current field
 
-      const direction = prompt("Which direction would you like to move? (u/d/l/r) "); // Ask the user for a direction
+      const direction = prompt("Which direction would you like to move? (u/d/l/r) "); // Ask the user for a d!irection
       // Store old position before move
       const oldY = this.playerY;
       const oldX = this.playerX;
